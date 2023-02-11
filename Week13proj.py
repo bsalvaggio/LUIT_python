@@ -48,5 +48,15 @@ for file in files:
         'group': file_group
     })
 
-# Print the list of dictionaries
-print(file_info)
+# Print the list of dictionaries (on separate lines. before this it was a block of unreadable text)
+for file in file_info:
+    print("Name: ", file['name'])
+    print("Size: ", file['size'])
+    print("Modification Time: ", file['modification_time'])
+    print("Access Time: ", file['access_time'])
+    print("Creation Time: ", file['creation_time'])
+    print("Type: ", file['type'])
+    print("Permissions: ", file['permissions'])
+    print("Owner: ", file['owner'])
+    print("Group: ", file['group'])
+    print("\n")
