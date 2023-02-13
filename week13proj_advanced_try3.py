@@ -13,8 +13,7 @@ def get_file_info(path='.'):
     Get information about files in a given path.
 
     Args:
-    path (str, optional): The path to the directory to get file information from.
-         Defaults to '.' (the current working directory).
+    path (str, optional): The path to the directory to get file information from. Defaults to '.' (the current working directory).
 
     Returns:
     list: A list of dictionaries, where each dictionary contains information about a file in the directory.
