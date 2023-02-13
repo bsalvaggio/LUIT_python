@@ -1,5 +1,9 @@
-#!/usr/bin/env python3
+"""
+Module for displaying recursive file information as a dictionary of dictionaries.
+"""
 
+
+#!/usr/bin/env python3
 import os
 import time
 
@@ -46,6 +50,7 @@ def get_file_info(path='.'):
             'owner': file_owner,
             'group': file_group
         })
+        
         # If the file is a directory, recursively call the function with that directory as the path
         if os.path.isdir(file_path):
             file_info.extend(get_file_info(file_path))
@@ -54,7 +59,7 @@ def get_file_info(path='.'):
     return file_info
 
 # Call the function and store the result in a variable
-nested_file_info = get_file_info()
+file_info = get_file_info()
 
 # Print the list of dictionaries (on separate lines)
 for file in file_info:
