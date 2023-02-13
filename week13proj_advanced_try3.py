@@ -19,7 +19,6 @@ def get_file_info(path='.'):
     Returns:
     list: A list of dictionaries, where each dictionary contains information about a file in the directory.
     """
-    # Your existing code here
 
     if path is None:
         path = os.getcwd()
