@@ -13,6 +13,7 @@ instances = ec2.instances.all()
 
 # Loop through the instances and stop them if they are not the current instance and are running
 for instance in instances:
+    print(instance)
     if instance.id != instance_id and instance.state['Name'] == 'running':
         response = instance.stop()
         print(f'Stopped instance: {instance.id}')
