@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import boto3
 
 # Set the region where your instances are located
