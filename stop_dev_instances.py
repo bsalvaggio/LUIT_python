@@ -15,7 +15,7 @@ instances = ec2_client.describe_instances(Filters=[
 ])
 
 # Extract the instance IDs from the filtered results and store them in a list
-instance_ids = [instance[0]['InstanceId'] for reservation in instances['Reservations'] for instance in reservation['Instances']]
+instance_ids = [instance['InstanceId'] for reservation in instances['Reservations'] for instance in reservation['Instances']]
 
 # If there are running instances with the Environment: Dev tag, stop them
 if len(instance_ids) > 0:
