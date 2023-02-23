@@ -1,0 +1,32 @@
+import boto3
+import json
+import random
+import time
+
+# Set up the SQS client
+sqs = boto3.client('sqs')
+queue_url = "YOUR_QUEUE_URL"
+
+def lambda_handler(event, context):
+    # Generate a random number between 1 and 100
+    random_number = random.randint(1, 100)
+
+    # Get the current time
+    current_time = int(time.time())
+
+    # Construct the message payload as a JSON object
+    message = {
+        "random_number": random_number,
+        "timestamp": current_time
+    }
+
+    # Send the message to the SQS queue
+    response = sqs.send_message(
+        QueueUrl=queue_url,
+        MessageBody=json.dumps(message)
+    )
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Message sent successfully')
+    }
