@@ -1,11 +1,11 @@
-import boto3
-import json
-import random
-import time
+import boto3  # Import the boto3 library to work with AWS services
+import json   # Import the json module to work with JSON data
+import random # Import the random module to generate a random number
+import time   # Import the time module to get the current time
 
 # Set up the SQS client
 sqs = boto3.client('sqs')
-queue_url = "YOUR_QUEUE_URL"
+queue_url = "https://sqs.us-east-1.amazonaws.com/669948573359/week15-sqs-queue" # URL of my SQS queue
 
 def lambda_handler(event, context):
     # Generate a random number between 1 and 100
@@ -16,17 +16,18 @@ def lambda_handler(event, context):
 
     # Construct the message payload as a JSON object
     message = {
-        "random_number": random_number,
-        "timestamp": current_time
+        "random_number": random_number,  # Include the random number in the message payload
+        "timestamp": current_time        # Include the current time in the message payload
     }
 
     # Send the message to the SQS queue
     response = sqs.send_message(
-        QueueUrl=queue_url,
-        MessageBody=json.dumps(message)
+        QueueUrl=queue_url,        # Specify the URL of the SQS queue
+        MessageBody=json.dumps(message)  # Convert the message payload to a JSON string
     )
 
     return {
         'statusCode': 200,
         'body': json.dumps('Message sent successfully')
     }
+    
