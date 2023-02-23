@@ -1,0 +1,15 @@
+import boto3
+
+# Create an SQS client
+sqs = boto3.client('sqs')
+
+def lambda_handler(event, context):
+    # Send a message to the SQS queue
+    response = sqs.send_message(
+        QueueUrl='https://sqs.us-east-1.amazonaws.com/669948573359/week15-sqs-queue',
+        MessageBody='Hello from Lambda!'
+    )
+    return {
+        'statusCode': 200,
+        'body': 'Message sent to SQS queue'
+    }
